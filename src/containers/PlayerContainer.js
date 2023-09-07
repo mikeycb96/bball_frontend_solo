@@ -1,17 +1,22 @@
-import PlayerList from "../components/PlayerList";
 import { useState, useEffect } from "react";
+import SearchBar from "../components/SearchBar";
 
 const PlayerContainer = () => {
     const [players, setPlayers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const [searchTerm, setSearchTerm] = useState(""); 
 
     const fetchPlayers = async (page) => {
         try {
             const response = await fetch(`https://www.balldontlie.io/api/v1/players?page=${page}&per_page=25`);
             const jsonData = await response.json();
-            setPlayers(jsonData.data);
+            const sortedPlayers = jsonData.data.sort((a, b) => {
+                // Compare players by last name
+                return a.last_name.localeCompare(b.last_name);
+            });
+            setPlayers(sortedPlayers);
             setTotalPages(jsonData.meta.total_pages);
             setCurrentPage(page);
         } catch (error) {
@@ -20,6 +25,16 @@ const PlayerContainer = () => {
             setLoading(false);
         }
     };
+
+    const handleSearch = (searchTerm) => {
+        // You can perform a search based on the searchTerm here
+        // For example, you can filter the players based on the search term
+        const filteredPlayers = players.filter((player) =>
+          `${player.first_name} ${player.last_name}`.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    
+        setPlayers(filteredPlayers);
+      };
 
     useEffect(() => {
         fetchPlayers(currentPage);
@@ -43,6 +58,9 @@ const PlayerContainer = () => {
                 <p>Loading...</p>
             ) : (
                 <div>
+                    <div>
+                    <SearchBar onSearch={handleSearch} />
+                    </div>
                     <div className="player-box-container">
                         {players.map((player) => (
                             <div key={player.id} className="player-box">
