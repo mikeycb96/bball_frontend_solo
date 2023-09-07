@@ -4,7 +4,6 @@ const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = () => {
-    // Pass the search term to the parent component (PlayerContainer)
     onSearch(searchTerm);
   };
 

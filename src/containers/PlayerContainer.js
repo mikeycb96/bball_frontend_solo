@@ -6,7 +6,7 @@ const PlayerContainer = () => {
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [searchTerm, setSearchTerm] = useState(""); 
+ 
 
     const fetchPlayers = async (page) => {
         try {
@@ -72,6 +72,11 @@ const PlayerContainer = () => {
                                 <p><strong>Height:</strong> {player.height_feet}"{player.height_inches}</p>
                                 <p><strong>Position:</strong> {player.position}</p>
                                 <p><strong>Team:</strong> {player.team.full_name}</p>
+                                <img
+                                    src="/logo/imagesball.png" 
+                                    alt="Ball Logo"
+                                    className="image-ball"
+                                />
                             </div>
                         ))}
                     </div>
