@@ -69,6 +69,7 @@ const PlayerContainer = () => {
                         {players.map((player) => (
                             <div key={player.id} className="player-box">
                                 <h2>{player.first_name} {player.last_name}</h2>
+                                <p><strong>Height:</strong> {player.height_feet}"{player.height_inches}</p>
                                 <p><strong>Position:</strong> {player.position}</p>
                                 <p><strong>Team:</strong> {player.team.full_name}</p>
                             </div>

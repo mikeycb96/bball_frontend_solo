@@ -8,8 +8,10 @@ const PlayerList = ({ players }) => {
         {players.map((player) => (
           <li key={player.id}>
             <strong>Name:</strong> {player.first_name} {player.last_name} <br />
+            <strong>Height:</strong> {player.height_feet}.{player.height_inches}
             <strong>Position:</strong> {player.position} <br />
             <strong>Team:</strong> {player.team.full_name}
+            
           </li>
         ))}
       </ul>
