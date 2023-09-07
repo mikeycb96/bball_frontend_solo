@@ -39,6 +39,11 @@
 
 .player-box-container {
   background-color: orange;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 20px;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .search-bar {
