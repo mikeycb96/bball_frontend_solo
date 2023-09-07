@@ -27,8 +27,6 @@ const PlayerContainer = () => {
     };
 
     const handleSearch = (searchTerm) => {
-        // You can perform a search based on the searchTerm here
-        // For example, you can filter the players based on the search term
         const filteredPlayers = players.filter((player) =>
           `${player.first_name} ${player.last_name}`.toLowerCase().includes(searchTerm.toLowerCase())
         );
@@ -58,7 +56,13 @@ const PlayerContainer = () => {
                 <p>Loading...</p>
             ) : (
                 <div className="player-container">
+                    <h1>NBA Players</h1>
                     <div className="search-bar">
+                    <img
+                        src="/logo/nba-logo2.png" 
+                        alt="NBA Logo"
+                        className="image-nba"
+                    />
                     <SearchBar onSearch={handleSearch} />
                     </div>
                     <div className="player-box-container">
