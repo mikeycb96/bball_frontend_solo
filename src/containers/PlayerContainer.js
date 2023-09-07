@@ -10,7 +10,7 @@ const PlayerContainer = () => {
 
     const fetchPlayers = async (page) => {
         try {
-            const response = await fetch(`https://www.balldontlie.io/api/v1/players?page=${page}&per_page=25`);
+            const response = await fetch(`https://www.balldontlie.io/api/v1/players?page=${page}&per_page=100`);
             const jsonData = await response.json();
             const sortedPlayers = jsonData.data.sort((a, b) => {
                 // Compare players by last name
@@ -57,8 +57,8 @@ const PlayerContainer = () => {
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                <div>
-                    <div>
+                <div className="player-container">
+                    <div className="search-bar">
                     <SearchBar onSearch={handleSearch} />
                     </div>
                     <div className="player-box-container">

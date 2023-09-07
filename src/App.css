@@ -37,3 +37,19 @@
   }
 }
 
+.player-box-container {
+  background-color: orange;
+}
+
+.search-bar {
+  background-color: rgb(81, 81, 199);
+}
+
+.player-container {
+  background-color: rgb(81, 81, 199);
+}
+
+.player-box {
+  background-color: orange;
+  margin: 20px;
+}
