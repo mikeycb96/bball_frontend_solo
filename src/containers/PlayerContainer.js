@@ -43,13 +43,21 @@ const PlayerContainer = () => {
                 <p>Loading...</p>
             ) : (
                 <div>
-                    <PlayerList players={players} />
+                    <div className="player-box-container">
+                        {players.map((player) => (
+                            <div key={player.id} className="player-box">
+                                <h2>{player.first_name} {player.last_name}</h2>
+                                <p><strong>Position:</strong> {player.position}</p>
+                                <p><strong>Team:</strong> {player.team.full_name}</p>
+                            </div>
+                        ))}
+                    </div>
                     <div>
                         <button onClick={loadPreviousPage} disabled={currentPage === 1}>
-                            Previous Page
+                            Load Previous
                         </button>
                         <button onClick={loadNextPage} disabled={currentPage === totalPages}>
-                            Next Page
+                            Load Next
                         </button>
                     </div>
                 </div>
