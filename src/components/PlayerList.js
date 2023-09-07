@@ -3,7 +3,7 @@ import React from 'react';
 const PlayerList = ({ players }) => {
   return (
     <div>
-      <h1>Player List</h1>
+      <h1>NBA Player List</h1>
       <ul>
         {players.map((player) => (
           <li key={player.id}>
